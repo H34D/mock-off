@@ -23,7 +23,7 @@ export default class Mockeroni {
 
 		const objectAndScope = Mockeroni._extractObjectAndScope(service);
 
-		Mockeroni.unstub(service);
+		Mockeroni.unstub(objectAndScope);
 		sinon.stub(objectAndScope.scope, objectAndScope.object, () => {
 
 			return implementation;
@@ -31,9 +31,9 @@ export default class Mockeroni {
 
 	};
 
-	static unstub(service) {
+	static unstub(args) {
 
-		const objectAndScope = Mockeroni._extractObjectAndScope(service);
+		const objectAndScope = typeof args === "string" ? Mockeroni._extractObjectAndScope(args) : args;
 
 		sinon.restore(objectAndScope.scope[objectAndScope.object]);
 	};
