@@ -3,7 +3,7 @@ import AWS from "aws-sdk-mock";
 before(() => {
 
 	console.log("Stubbing all the things!");
-
+/*
 	AWS.mock("DynamoDB.DocumentClient", "query", (params, callback) => {
 		callback(null, {
 			Items: []
@@ -15,7 +15,7 @@ before(() => {
 			Buckets: []
 		});
 	});
-
+*/
 });
 
 after(() => {
