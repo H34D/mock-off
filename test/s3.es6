@@ -3,6 +3,7 @@ import {listS3Buckets} from "../src/s3.es6";
 
 before(() => {
 
+	console.log("Mocking S3 listBuckets");
 	AWS.mock("S3", "listBuckets", (params, callback) => {
 
 		callback(null, {

@@ -11,7 +11,6 @@ before(() => {
 	});
 
 	AWS.mock("S3", "listBuckets", (params, callback) => {
-
 		callback(null, {
 			Buckets: []
 		});

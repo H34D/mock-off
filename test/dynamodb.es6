@@ -2,6 +2,8 @@ import AWS from "aws-sdk-mock";
 import {query} from "../src/dynamodb";
 
 before(() => {
+
+	console.log("Mocking DocumentClient query");
 	AWS.mock("DynamoDB.DocumentClient", "query", (params, callback) => {
 
 		callback(null, {
