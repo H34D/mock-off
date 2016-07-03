@@ -17,12 +17,11 @@ AWS.mock('S3', 'listBuckets', function (params, callback) {
 	});
 });
 
-describe("", () => {
+describe("S3", () => {
 
 	it("listsBuckets", done => {
 
 		listS3Buckets(done);
 	});
-	
-	
+
 });
