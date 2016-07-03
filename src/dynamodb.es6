@@ -24,15 +24,12 @@ export const query = cb => {
 	docClient.query(params, (err, data) => {
 
 		if (err) {
+
 			console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
 		} else {
 
 			console.log("Query succeeded.");
-
-			data.Items.forEach(item => {
-
-				console.log(JSON.stringify(item));
-			});
+			console.log(JSON.stringify(data.Items, null, 2));
 
 			cb();
 		}
