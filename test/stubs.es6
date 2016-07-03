@@ -1,27 +1,37 @@
-import AWS from "aws-sdk-mock";
+import Mockeroni from "./mockeroni";
 
 before(() => {
 
 	console.log("Stubbing all the things!");
-/*
-	AWS.mock("DynamoDB.DocumentClient", "query", (params, callback) => {
-		callback(null, {
-			Items: []
-		});
+
+	console.log("Stubbing S3");
+	Mockeroni.stub("S3", {
+		listBuckets: (params, callback) => {
+
+			console.log("S3.listBuckets stub");
+			callback(null, {
+				Buckets: []
+			});
+		}
 	});
 
-	AWS.mock("S3", "listBuckets", (params, callback) => {
-		callback(null, {
-			Buckets: []
-		});
+	console.log("Stubbing DynamoDB.DocumentClient");
+	Mockeroni.stub("DynamoDB.DocumentClient", {
+		query: (params, callback) => {
+
+			console.log("DynamoDB.DocumentClient.query stub");
+			callback(null, {
+				Items: []
+			});
+		}
 	});
-*/
+
 });
 
 after(() => {
 
 	console.log("Un-stubbing all the things!");
 
-	AWS.restore("DynamoDB.DocumentClient");
-	AWS.restore("S3");
+	Mockeroni.unstub("S3");
+	Mockeroni.unstub("DynamoDB.DocumentClient");
 });
