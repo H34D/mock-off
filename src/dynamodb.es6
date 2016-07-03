@@ -21,7 +21,7 @@ export const query = cb => {
 		}
 	};
 
-	docClient.query(params, function (err, data) {
+	docClient.query(params, (err, data) => {
 
 		if (err) {
 			console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
