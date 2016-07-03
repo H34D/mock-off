@@ -1,8 +1,5 @@
 import AWS from "aws-sdk";
-import traverse from "traverse";
 import sinon from "sinon";
-
-const _AWS = traverse(AWS);
 
 export default class Mockeroni {
 
@@ -10,8 +7,9 @@ export default class Mockeroni {
 
 		const serviceArray = service.split(".");
 		const objectToStub = serviceArray.pop();
+		const serviceString = serviceArray.join(".");
 
-		const scope = _AWS.get(serviceArray);
+		const scope = serviceString ? AWS[serviceString] : AWS;
 
 		return {
 			object: objectToStub,
